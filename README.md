@@ -2,7 +2,7 @@
 Repo for ASI Karikas 2024, written in Python
 
 # ASI KARIKA 2024 eelvooru ülesanded 
-NB! Kõigi ülesannete lahendamine ei ole kohustuslik. Esimese ülesande lahendus annab maksimaalselt 20 punkti. Teise ülesande lahendus annab maksimaalselt 40 punkti ja samuti kolmanda ülesande ülesande lahendus annab maksimaalselt 40 punkti. Kokku on võimalik saada kuni 100 punkti. Kaks parima punktisummaga võistkonda pääsevad lõppvooru. Kui maksimaalse tulemuse on saanud rohkem kui 2 võistkonda, siis suurendatakse finaali pääsenute arvu. 
+NB! Kõigi ülesannete lahendamine ei ole kohustuslik. **Esimese ülesande lahendus annab maksimaalselt 20 punkti. Teise ülesande lahendus annab maksimaalselt 40 punkti ja samuti kolmanda ülesande ülesande lahendus annab maksimaalselt 40 punkti.** Kokku on võimalik saada **kuni 100 punkti**. Kaks parima punktisummaga võistkonda pääsevad lõppvooru. Kui maksimaalse tulemuse on saanud rohkem kui 2 võistkonda, siis suurendatakse finaali pääsenute arvu. 
 _________________________________________________________________________________ 
 # 1. Tetris 
 ## Teil on vaja luua oma Tetrise mäng. Mänguvälja mõõtmed peaksid olema 10 raku laiused ja 20 raku kõrgused, ilma raamita. Mängus peaks olema seitse erinevat kujundit. 
