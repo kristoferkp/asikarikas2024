@@ -22,7 +22,7 @@ Programmi raames saab kasutaja luua konto, mille kaudu saab ta jälgida oma oste
 Kui pilet on ostetud, peab kasutajal olema võimalus seda kontrollida. Näiteks pilet, mille kasutaja on ise loonud, ei tohiks süsteemis kehtivaks lugeda. Kui programm mingil põhjusel suletakse, ei tohiks kasutaja ostetud pileteid ega kontot kaotada. 
 ● Teie programmil peab olema kasutusjuhend, mis kirjeldab, mida teie programm suudab teha ja kuidas seda teha. 
 ● Selle ülesandega on võimalik saada lisapunkte oma välja töötatud funktsionaalsusega. Need tuleb kindlasti kanda kasutusjuhendisse. 
-www.asikarikas.ee asikarikas@asikarikas.ee Tel. +372 620 2256
+
 
 Teie programm peaks suutma teha järgnevat: 
 1. Kasutajal peaks olema võimalus mugavalt navigeerida menüü kaudu erinevate valikute vahel. 
@@ -34,8 +34,8 @@ Teie programm peaks suutma teha järgnevat:
 7. Programm peaks näitama võimalikke peatusi ja seejärel küsima kasutajalt sisendit. 
 8. On võimalik osta pilet, millel on mitu peatust. Näiteks võib kasutaja soovida sõita bussiga Raplast Türile ja sealt edasi Pärnusse. 
 9. Pileti ostmisel peaks kasutajale saatma viisaka e-kirja, mille sisuks on pilet ja mis sisaldab manuses piletit ennast. 
-10.Administraatori kasutajal peab olema võimalus sisestada süsteemi uusi piletitüüpe; selline võimalus ei tohi olla tavalisel kasutajal. 
-11.Pileti sisestamisel on võimalik lisada kirjeldus, määrata peatused jne. www.asikarikas.ee asikarikas@asikarikas.ee Tel. +372 620 2256
+10. Administraatori kasutajal peab olema võimalus sisestada süsteemi uusi piletitüüpe; selline võimalus ei tohi olla tavalisel kasutajal. 
+11. Pileti sisestamisel on võimalik lisada kirjeldus, määrata peatused jne.
 
 
 
