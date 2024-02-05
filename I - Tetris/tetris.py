@@ -181,17 +181,19 @@ class Block(pygame.sprite.Sprite):
             self.move_down()
 
 
-class SquareBlock(Block):
+class CrossBlock(Block):
     struct = (
-        (1, 1),
-        (1, 1)
+        (0, 1, 0),
+        (1, 1, 1),
+        (0, 1, 0)
     )
 
 
-class TBlock(Block):
+class TZBlock(Block):
     struct = (
+        (0, 1, 0),
         (1, 1, 1),
-        (0, 1, 0)
+        (1, 0, 0)
     )
 
 
@@ -207,25 +209,35 @@ class LineBlock(Block):
 class LBlock(Block):
     struct = (
         (1, 1),
-        (1, 0),
-        (1, 0),
+        (1, 0)
     )
 
 
-class ZBlock(Block):
+class OneBlock(Block):
     struct = (
-        (0, 1),
-        (1, 1),
-        (1, 0),
+        (1, 1, 0),
+        (0, 1, 0),
+        (1, 1, 1),
     )
 
+class UBlock(Block):
+    struct = (
+        (1, 0, 1),
+        (1, 1, 1)
+    )
+
+class RectangleBlock(Block):
+    struct = (
+        (1, 1, 1),
+        (1, 1, 1)
+    )
 
 class BlocksGroup(pygame.sprite.OrderedUpdates):
 
     @staticmethod
     def get_random_block():
         return random.choice(
-            (SquareBlock, TBlock, LineBlock, LBlock, ZBlock))()
+            (CrossBlock, TZBlock, LineBlock, LBlock, OneBlock, UBlock, RectangleBlock))()
 
     def __init__(self, *args, **kwargs):
         super().__init__(self, *args, **kwargs)
@@ -362,7 +374,7 @@ class BlocksGroup(pygame.sprite.OrderedUpdates):
 
     def rotate_current_block(self):
         # Prevent SquareBlocks rotation.
-        if not isinstance(self.current_block, SquareBlock):
+        if not isinstance(self.current_block, CrossBlock):
             self.current_block.rotate(self)
             self.update_grid()
 
