@@ -1,5 +1,8 @@
 # asikarikas2024
-Repo for ASI Karikas 2024, written in Python
+Repo for ASI Karikas 2024, written in Python.
+
+Meil on ikka väga vähe aega. Nagu väga vähe. Mõni see on terve kuu projekt, aitäh Vahur Lell.
+Varastame võimalikult palju koodi, kui võimalik/eetiline on.
 
 # ASI KARIKA 2024 eelvooru ülesanded 
 NB! Kõigi ülesannete lahendamine ei ole kohustuslik. **Esimese ülesande lahendus annab maksimaalselt 20 punkti. Teise ülesande lahendus annab maksimaalselt 40 punkti ja samuti kolmanda ülesande ülesande lahendus annab maksimaalselt 40 punkti.** Kokku on võimalik saada **kuni 100 punkti**. Kaks parima punktisummaga võistkonda pääsevad lõppvooru. Kui maksimaalse tulemuse on saanud rohkem kui 2 võistkonda, siis suurendatakse finaali pääsenute arvu. 
