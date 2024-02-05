@@ -264,6 +264,7 @@ class BlocksGroup(pygame.sprite.OrderedUpdates):
                 affected_blocks = list(
                     OrderedDict.fromkeys(self.grid[-1 - i]))
 
+                blocks_to_remove = []
                 for block, y_offset in affected_blocks:
                     # Remove the block tiles which belong to the
                     # completed line.
@@ -280,7 +281,11 @@ class BlocksGroup(pygame.sprite.OrderedUpdates):
                         block.redraw()
                     else:
                         # If the struct is empty then the block is gone.
-                        self.remove(block)
+                        blocks_to_remove.append(block)
+
+                # Remove the blocks
+                for block in blocks_to_remove:
+                    self.remove(block)
 
                 # Instead of checking which blocks need to be moved
                 # once a line was completed, just try to move all of
