@@ -9,7 +9,8 @@ ________________________________________________________________________________
 
 Kujundid peaksid ilmuma mänguvälja ülaosas, teisel real. Kujundeid peaks olema võimalik pöörata päripäeva. Kui kujund jõuab mänguvälja põhja või maandub teisele kujundile, ilmub uus kujund ülevalt. 
 Kui langenud kujundid täidavad horisontaalse rea täielikult, eemaldatakse see rida ja ülemine osa nihutatakse alla vastavalt eemaldatud horisontaalsete ridade arvule. Seejärel lisatakse skoorile N punkti, näiteks 100. 
-Mäng lõpeb, kui pole ruumi uuele kujundile. Seejärel näidatakse mängija lõppskoori. 
+Mäng lõpeb, kui pole ruumi uuele kujundile. Seejärel näidatakse mängija lõppskoori.
+
 ![diagram](/tetrisBlocks.png)
 
 
