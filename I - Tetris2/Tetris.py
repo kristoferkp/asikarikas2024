@@ -21,14 +21,14 @@ pygame.font.init()
 
 col = 10  # 10 columns
 row = 20  # 20 rows
-s_width = 800  # window width
-s_height = 750  # window height
+s_width = 300 # window width
+s_height = 600  # window height
 play_width = 300  # play window width; 300/10 = 30 width per block
 play_height = 600  # play window height; 600/20 = 20 height per block
 block_size = 30  # size of block
 
 top_left_x = (s_width - play_width) // 2
-top_left_y = s_height - play_height - 50
+top_left_y = s_height - play_height
 
 filepath = './I - Tetris2/highscore.txt'
 fontpath = './I - Tetris2/arcade.ttf'
@@ -319,7 +319,7 @@ def draw_window(surface, grid, score=0, last_score=0):
     font = pygame.font.Font(fontpath_mario, 65)
     label = font.render('TETRIS', 1, (255, 255, 255))  # initialise 'Tetris' text with white
 
-    surface.blit(label, ((top_left_x + play_width / 2) - (label.get_width() / 2), 30))  # put surface on the center of the window
+    #surface.blit(label, ((top_left_x + play_width / 2) - (label.get_width() / 2), 30))  # put surface on the center of the window
 
     # current score
     font = pygame.font.Font(fontpath, 30)
@@ -328,7 +328,7 @@ def draw_window(surface, grid, score=0, last_score=0):
     start_x = top_left_x + play_width + 50
     start_y = top_left_y + (play_height / 2 - 100)
 
-    surface.blit(label, (start_x, start_y + 200))
+    #surface.blit(label, (start_x, start_y + 200))
 
     # last score
     label_hi = font.render('HIGHSCORE   ' + str(last_score), 1, (255, 255, 255))
@@ -336,7 +336,7 @@ def draw_window(surface, grid, score=0, last_score=0):
     start_x_hi = top_left_x - 240
     start_y_hi = top_left_y + 200
 
-    surface.blit(label_hi, (start_x_hi + 20, start_y_hi + 200))
+    #surface.blit(label_hi, (start_x_hi + 20, start_y_hi + 200))
 
     # draw content of the grid
     for i in range(row):
@@ -468,14 +468,18 @@ def main(window):
             if last_score < score:
                 last_score = score
 
-        draw_window(window, grid, score, last_score)
-        draw_next_shape(next_piece, window)
+        draw_window(window, grid, score)
+        #draw_next_shape(next_piece, window)
         pygame.display.update()
 
         if check_lost(locked_positions):
             run = False
 
-    draw_text_middle('You Lost', 40, (255, 255, 255), window)
+    # Clear the screen
+    window.fill((0, 0, 0))
+    pygame.display.update()
+
+    draw_text_middle(f'Score {score}', 40, (255, 255, 255), window)
     pygame.display.update()
     pygame.time.delay(2000)  # wait for 2 seconds
     pygame.quit()
@@ -484,7 +488,7 @@ def main(window):
 def main_menu(window):
     run = True
     while run:
-        draw_text_middle('Press any key to begin', 50, (255, 255, 255), window)
+        draw_text_middle('Start', 50, (255, 255, 255), window)
         pygame.display.update()
 
         for event in pygame.event.get():
