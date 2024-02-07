@@ -21,15 +21,6 @@ Download the source code from the repository and run the file just as any other 
 python3 Tetris.py
 ```
 
-## Screenshots
-
-![1](https://github.com/rajatdiptabiswas/tetris-pygame/blob/master/screenshot-start.png)
-*Startup screen*
-
-![2](https://github.com/rajatdiptabiswas/tetris-pygame/blob/master/screenshot-active.png)
-*Active game screen*
-
-
 ## Prerequisites
 * [Python](https://www.python.org)
 * [Pygame](https://www.pygame.org/wiki/GettingStarted), an open source Python library for making multimedia applications

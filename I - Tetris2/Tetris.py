@@ -30,9 +30,9 @@ block_size = 30  # size of block
 top_left_x = (s_width - play_width) // 2
 top_left_y = s_height - play_height
 
-filepath = './I - Tetris2/highscore.txt'
-fontpath = './I - Tetris2/arcade.ttf'
-fontpath_mario = './I - Tetris2/mario.ttf'
+filepath = 'highscore.txt'
+fontpath = 'arcade.ttf'
+fontpath_mario = 'mario.ttf'
 
 # shapes formats
 
