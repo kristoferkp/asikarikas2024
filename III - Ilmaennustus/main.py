@@ -21,8 +21,8 @@ df['Kell (UTC)'] = df['Kell (UTC)'].str.replace('.', ':')
 
 # Combine 'Aasta', 'Kuu', 'Päev' and 'Kell (UTC)' into a datetime
 df['Date Time'] = pd.to_datetime(df['Aasta'].astype(str) + df['Kuu'].astype(str).str.zfill(2) + df['Päev'].astype(str).str.zfill(2) + df['Kell (UTC)'], format='%Y%m%d%H:%M')
-
+date_time = df['Date Time']
 # Remove the 'Date Time' column
 df = df.drop(['Aasta', 'Kuu', 'Päev', 'Date Time'], axis=1)
 
-print(df.describe().transpose())
+df.describe().transpose()
