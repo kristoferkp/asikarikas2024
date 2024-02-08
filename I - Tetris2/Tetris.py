@@ -30,7 +30,6 @@ block_size = 30  # size of block
 top_left_x = (s_width - play_width) // 2
 top_left_y = s_height - play_height
 
-filepath = 'highscore.txt'
 fontpath = 'arcade.ttf'
 fontpath_mario = 'mario.ttf'
 
@@ -357,24 +356,6 @@ def draw_window(surface, grid, score=0, last_score=0):
     # pygame.display.update()
 
 
-# update the score txt file with high score
-def update_score(new_score):
-    score = get_max_score()
-
-    with open(filepath, 'w') as file:
-        if new_score > score:
-            file.write(str(new_score))
-        else:
-            file.write(str(score))
-
-
-# get the high score from the file
-def get_max_score():
-    with open(filepath, 'r') as file:
-        lines = file.readlines()        # reads all the lines and puts in a list
-        score = int(lines[0].strip())   # remove \n
-
-    return score
 
 
 def main(window):
@@ -390,7 +371,6 @@ def main(window):
     fall_speed = 0.35
     level_time = 0
     score = 0
-    last_score = get_max_score()
 
     while run:
         # need to constantly make new grid as locked positions always change
@@ -463,7 +443,6 @@ def main(window):
             next_piece = get_shape()
             change_piece = False
             score += clear_rows(grid, locked_positions) * 10    # increment score by 10 for every row cleared
-            update_score(score)
 
             if last_score < score:
                 last_score = score
