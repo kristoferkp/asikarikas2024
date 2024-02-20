@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.17",
+    "firebase": "^10.8.0",
     "firebase-tools": "latest",
+    "h3": "",
     "nuxt": "^3.10.2",
     "postcss": "^8.4.35",
     "preline": "^2.0.3",
@@ -20,6 +22,7 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "latest"
+    "@nuxtjs/tailwindcss": "latest",
+    "@pinia/nuxt": "latest"
   }
 }
