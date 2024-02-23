@@ -1,5 +1,5 @@
 export default defineAppConfig({
-    title: 'Hello Nuxt',
+    title: 'Piletirong',
     theme: {
       dark: true,
       colors: {
