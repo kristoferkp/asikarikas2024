@@ -5,7 +5,7 @@
 			<div>
 				<a
 					class="flex-none text-xl font-semibold text-black dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-					href="#"
+					href="/"
 					aria-label="Piletirong"
 					>Piletirong</a
 				>
