@@ -5,5 +5,6 @@ export default defineNuxtConfig({
   plugins: ["~/plugins/preline.client.ts"],
 
   modules: ["@nuxtjs/tailwindcss", '@nuxtjs/supabase'],
+  supabase: { redirect: false },
 
 })
