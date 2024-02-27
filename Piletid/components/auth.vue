@@ -72,8 +72,8 @@
 
 								<input
 									type="submit"
-									:value="laeb ? 'Laeb' : 'Saada maagiline link'"
-									:disabled="laeb"
+									:value="loading ? 'Laeb' : 'Saada maagiline link'"
+									:disabled="loading"
 									class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gradient-to-tl from-blue-600 to-violet-600 hover:from-violet-600 hover:to-blue-600 text-white disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" />
 							</div>
 						</form>
