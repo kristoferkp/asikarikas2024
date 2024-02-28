@@ -224,7 +224,7 @@
 		}
 	}
 	async function buy(ticket) {
-		const user = useSupabaseUser();
+		const user = supabase.auth.getUser();
 		console.log(ticket);
 		if (!user) {
 			alert('Logi sisse, et osta pilet');
@@ -240,7 +240,10 @@
 		if (error) {
 			alert('Viga pileti ostmisel');
 		} else {
-			alert('Pilet ostetud');
+			const email = user.email
+			const { data, error } = await supabase.auth.resetPasswordForEmail(user.email, {
+				redirectTo: '/kasutaja',
+			})
 		}
 	}
 </script>

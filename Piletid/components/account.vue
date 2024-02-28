@@ -62,8 +62,11 @@
 </script>
 
 <template>
+<div class="max-w-[85rem] mx-auto">
+  <!-- Grid -->
+  <div class="grid md:grid-cols-2 gap-4 md:gap-8  md:items-center">
 	<form
-		class="max-w-md mx-auto px-4 sm:px-6 lg:px-8 pb-10"
+		class="max-w-md px-4 sm:px-6 lg:px-8 pb-10"
 		@submit.prevent="updateProfile">
 		<div class="p-5">
 			<label
@@ -151,4 +154,7 @@
 			</button>
 		</div>
 	</form>
+	<BoughtTickets />
+  </div>
+</div>
 </template>
