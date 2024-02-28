@@ -9,10 +9,10 @@
         <div class="flex justify-between items-center">
           <div>
             <h3 class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-gray-400 dark:text-gray-200">
-              Management
+              {{ ticket.ticket_id }}
             </h3>
             <p class="text-sm text-gray-500">
-              4 job positions
+              {{ ticket.from }} - {{ ticket.to }}
             </p>
           </div>
           <div class="ps-3">
@@ -29,3 +29,8 @@
 </div>
 <!-- End Card Section -->
 </template>
+
+<script setup>
+  const supabase = useSupabaseClient();
+  
+</script>

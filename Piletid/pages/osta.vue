@@ -1,5 +1,4 @@
 
 <template>
 	<Purchase />
-	<Table />
 </template>
