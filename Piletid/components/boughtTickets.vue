@@ -36,6 +36,7 @@
   			.select()
 		purchases.value = data;
 		console.log(purchases.value);
+    
 	}
   async function getTicketInfo() {
     const { data } = await supabase

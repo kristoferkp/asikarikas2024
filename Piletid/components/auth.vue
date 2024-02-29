@@ -1,4 +1,5 @@
 <script setup>
+	import { getData, setData } from 'nuxt-storage/local-storage';
 	const supabase = useSupabaseClient();
 
 	const loading = ref(false);
@@ -7,6 +8,7 @@
 	const handleLogin = async () => {
 		try {
 			loading.value = true;
+			setData("email", email.value);
 			const { error } = await supabase.auth.signInWithOtp({
 				email: email.value,
 			});
