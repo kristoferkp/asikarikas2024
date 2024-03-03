@@ -1,52 +1,88 @@
-<template>
-    <!-- Card Section -->
-<div class="">
-  <!-- Grid -->
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
-    <!-- Card -->
-    <a v-for="purchase in purchases" class="min-w-[15rem] group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
-      <div class="p-4 md:p-5">
-        <div class="flex justify-between items-center">
-          <div>
-            <h3 class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-gray-400 dark:text-gray-200">
-              {{ purchase.ticket_id }}
-            </h3>
-          </div>
-          <div class="ps-3">
-            <svg class="flex-shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-          </div>
-        </div>
+<template>	
+  <div class="flex flex-col">
+  <div class="-m-1.5 overflow-x-auto">
+    <div class="p-1.5 min-w-full inline-block align-middle">
+      <div class="overflow-hidden">
+        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+          <thead>
+            <tr>
+              <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Lähtepeatus</th>
+              <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Sihtpeatus</th>
+              <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Stardiaeg</th>
+              <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Kohalejõudmise aeg</th>
+              <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Kuupäev</th>
+              <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Transpordivahend</th>
+              <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Hind</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+            <tr v-for="ticket in tickets">
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ ticket.from }}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ ticket.to }}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ ticket.start_time }}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ ticket.end_time }}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ ticket.date }}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ ticket.vehicle_type }}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ ticket.price }}€</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </a>
-    <!-- End Card -->  
+    </div>
   </div>
-  <!-- End Grid -->
 </div>
-<!-- End Card Section -->
 </template>
 
 <script setup>
-  const supabase = useSupabaseClient();
-  const purchases = ref([]);
-  const tickets = ref([]);
+	const supabase = useSupabaseClient();
+	const purchases = ref([]);
+	const tickets = ref([]);
+	const ticketIDs = ref([]);
 
 	async function getPurchases() {
-		const { data } = await supabase
-  			.from('purchases')
-  			.select()
+		const { data } = await supabase.from("purchases").select();
 		purchases.value = data;
-		console.log(purchases.value);
-    
+		bigData(purchases);
 	}
-  async function getTicketInfo() {
-    const { data } = await supabase
-      .from('tickets')
-      .select()
-    tickets.value = data;
-    console.log(tickets.value);
-  }
+	function bigData(purchases) {
+		purchases.value.forEach((purchase) => {
+			ticketIDs.value.push(purchase.ticket_id);
+		});
+		getTicketInfo(ticketIDs);
+	}
+	async function getTicketInfo(ticketIDs) {
+		const { data } = await supabase
+			.from("tickets")
+			.select()
+			.in("ticket_id", ticketIDs.value);
+		tickets.value = data;
+		//console.log(tickets.value);
+		duplicateTickets();
+	}
+	function duplicateTickets() {
+		// Count occurrences of each ticketID
+		const ticketIDCounts = ticketIDs.value.reduce((acc, id) => {
+			acc[id] = (acc[id] || 0) + 1;
+			return acc;
+		}, {});
 
-  onMounted(() => {
-    getPurchases();
-  });
+		// Duplicate tickets with ticketID that have more than one occurrence
+		const duplicatedTickets = tickets.value.reduce((acc, ticket) => {
+			const count = ticketIDCounts[ticket.ticket_id];
+			if (count > 1) {
+				for (let i = 0; i < count; i++) {
+					acc.push(ticket);
+				}
+			} else {
+				acc.push(ticket);
+			}
+			return acc;
+		}, []);
+
+		tickets.value = duplicatedTickets;
+	}
+
+	onMounted(() => {
+		getPurchases();
+	});
 </script>

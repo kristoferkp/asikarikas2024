@@ -23,8 +23,8 @@
 </script>
 
 <template>
-	<body class="h-full items-center">
-		<main class="w-full max-w-md mx-auto p-6">
+	<body class="mx-auto">
+		<main class="max-w-md mx-auto">
 			<div
 				class="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
 				<div class="p-4 sm:p-7">

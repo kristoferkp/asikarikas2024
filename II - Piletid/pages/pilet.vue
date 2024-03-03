@@ -3,6 +3,7 @@
 		<h1 class="text-4xl font-semibold text-gray-800 dark:text-gray-200">
 			Pileti info
 		</h1>
+		<Auth v-if="needsAuth" />
 		<!-- Table Section -->
 		<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
 			<!-- Card -->
@@ -187,23 +188,34 @@
 </template>
 
 <script setup>
+	const needsAuth = false;
 	import { getData, setData } from "nuxt-storage/local-storage";
 	const ticket = getData("ticket");
 	console.log(ticket);
 
 	const supabase = useSupabaseClient();
+	const user = supabase.auth.getUser();
+	
 	async function buy(ticket) {
-		const user = supabase.auth.getUser();
+		if (!user) {
+			alert("Logi sisse, et piletit osta");
+			needsAuth = true;
+		};
 		const email = getData("email");
 
-		if (!user) {
-			alert("Logi sisse, et osta pilet ning siduda pilet kontoga");
-			return;
-		}
+		if (!email) {
+			try {
+			email = window.prompt("Sisestage oma emaili aadress");
+			setData("email", email);
+			} catch (error) {
+			console.error(error);
+			}
+		};
 		if (confirm("Kas oled kindel, et soovid pileti osta?") == true) {
 			const { data, error } = await supabase.from("purchases").insert([
 				{
 					ticket_id: ticket.ticket_id,
+					email: email,
 				},
 			]);
 			if (error) {

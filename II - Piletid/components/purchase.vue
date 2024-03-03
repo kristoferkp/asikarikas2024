@@ -202,27 +202,7 @@
 		event.preventDefault();
 		const to_city = document.getElementById("to_city").value;
 		const from_city = document.getElementById("from_city").value;
-		const { data, error } = await supabase
-			.from("tickets")
-			.select("*")
-			.eq("to", to_city)
-			.eq("from", from_city);
-		if (error) {
-			deeperSearch(to_city, from_city);
-		} else if (data.length === 0) {
-			deeperSearch(to_city, from_city);
-		} else {
-			tickets.value = data;
-		}
-	}
-	async function deeperSearch(to_city, from_city) {
-		
-		const {data, error} = await supabase
-			.rpc('get_tickets', { to_city: to_city, from_city: from_city })
-			//.from('tickets')
-  			//.select('*')
-  			//.or('to.eq.from,to.eq.from');
-
+		const { data, error } = await supabase.rpc('get_tickets', { to_city, from_city });
 		if (error) {
 			alert('Viga pileti leidmisel');
 		} else if (data.length === 0) {
