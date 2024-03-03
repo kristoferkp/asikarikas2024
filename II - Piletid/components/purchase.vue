@@ -39,6 +39,58 @@
             class="max-w-sm py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gradient-to-tl from-blue-600 to-violet-600 hover:from-violet-600 hover:to-blue-600 text-white disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
           />
         </div>
+        <div
+          class="mt-5 lg:mt-8 flex flex-col items-center gap-2 sm:flex-row sm:gap-3"
+        >
+          <label
+            for="hs-leading-icon username"
+            class="block text-sm font-medium mb-2 dark:text-white"
+            >Kuupäeva vahemik</label
+          >
+          <input
+            class="py-3 px-4 block max-w-md border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+            type="date"
+            id="start"
+            name="trip-start"
+            value="2024-03-01"
+            min="2024-03-01"
+            max="2026-12-31"
+          />
+          
+          <input
+            class="py-3 px-4 block max-w-md border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+            type="date"
+            id="end"
+            name="trip-end"
+            value="2024-03-01"
+            min="2024-03-01"
+            max="2026-12-31"
+          />
+        </div>
+		<div
+          class="mt-5 lg:mt-8 flex flex-col items-center gap-2 sm:flex-row sm:gap-3"
+        >
+          <label
+            for="hs-leading-icon username"
+            class="block text-sm font-medium mb-2 dark:text-white"
+            >Hinna vahemik</label
+          >
+          <input
+            class="py-3 px-4 block max-w-md border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+            type="number"
+            id="start-price"
+            name="price-start"
+            value="5"
+          />
+          
+          <input
+            class="py-3 px-4 block max-w-md border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+            type="number"
+            id="end-price"
+            name="price-end"
+            value="20"
+          />
+        </div>
       </form>
     </div>
   </div>
@@ -132,7 +184,6 @@
                     >
                     </span>
                   </th>
-        
                 </tr>
               </thead>
 
@@ -203,9 +254,7 @@
                 </tr>
               </tbody>
             </table>
-            
           </div>
-		  
         </div>
       </div>
     </div>
@@ -225,10 +274,21 @@ async function findTicket(event) {
   event.preventDefault();
   const to_city = capitalize(document.getElementById("to_city").value);
   const from_city = capitalize(document.getElementById("from_city").value);
-  const { data, error } = await supabase.rpc("get_tickets", {
-    to_city,
-    from_city,
-  });
+  const start_date = document.getElementById("start").value;
+  const end_date = document.getElementById("end").value;
+  const start_price = document.getElementById("start-price").value;
+  const end_price = document.getElementById("end-price").value;
+
+  console.log(start_date, end_date);
+  const { data, error } = await supabase
+    .rpc("get_tickets", {
+      to_city,
+      from_city,
+    })
+	.gte("date", start_date)
+  	.lte("date", end_date)
+	.gte("price", start_price)
+  	.lte("price", end_price);
   if (error) {
     alert("Viga pileti leidmisel");
   } else if (data.length === 0) {

@@ -79,8 +79,21 @@ Leheküljel on kaks kasti, esimene on sihtkoht, teine on lähtekoht. Sisesta lin
 
 Funktsioon leiab kõik piletid, kus on tõene üks tingimustest: esimene tingimus kontrollib, kas muutuja “to_city” vastab sihtkoha väärtusele, ja kui “from_city” vastab lähtkoha väärtusele või kui “from_city” on olemas JSONB veerust nimega “stops”. Teine tingimus on sarnane, kuid kontrollib, kas “from_city” vastab määratud väärtusele, ja kui “to_city” vastab mõnele muule määratud väärtusele või kui “to_city” on samas “stops” massiivis olemas. 
 
-Selle funktsiooniga on võimalik leida kõik piletid, mis lähevad ühest kohast teise, ning piletid millel on peatus, kuhu kasutaja soovib minna.
+Selle funktsiooniga on võimalik leida kõik piletid, mis lähevad ühest kohast teise, ning piletid millel on peatus, kuhu kasutaja soovib minna. Lisaks leiab funktsioon kõik piletid ajavahemikust ning ka hinna vahemikust.
+
+Proovi näiteks Paide-Tartu 01/03/2024 - 10/03/2024 - 5-10 eurot.
+Vastuseks on Tartu-Tallinn pilet, millel on peatus Paides.
 
 Kui kasutaja leiab pileti, millele ta soovib minna, saab ta vajutada osta nuppu, mis viib ta /pilet veebilehele, et oma ostu kinnitada.
 
 Pileti info leheküljel on näha kõiki andmeid, k.a. peatuste listi. Vajutades Osta, küsib veebileht, kas kasutaja on kindel, et soovib selle pileti osta. Kui kasutaja vajutab jah, saab tema ost lisatud andmebaasi, tema kasutaja alla. Kasutaja saab ka enda kasutajaga seotud emailile kirja, et tema ost on kinnitatud.
+
+### Kasutatud tehnoloogiatest
+
+- Nuxt3
+- Vue
+- Supabase
+- PostgreSQL
+- Tailwind CSS
+- Javascript (Typescript)
+- Netlify
