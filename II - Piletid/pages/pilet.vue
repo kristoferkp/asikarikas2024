@@ -201,21 +201,11 @@
 			alert("Logi sisse, et piletit osta");
 			needsAuth = true;
 		};
-		const email = getData("email");
-
-		if (!email) {
-			try {
-			email = window.prompt("Sisestage oma emaili aadress");
-			setData("email", email);
-			} catch (error) {
-			console.error(error);
-			}
-		};
+	
 		if (confirm("Kas oled kindel, et soovid pileti osta?") == true) {
 			const { data, error } = await supabase.from("purchases").insert([
 				{
 					ticket_id: ticket.ticket_id,
-					email: email,
 				},
 			]);
 			if (error) {
