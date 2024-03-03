@@ -217,7 +217,11 @@
 	}
 	async function deeperSearch(to_city, from_city) {
 		
-		const {data, error} = await supabase.rpc('get_tickets', { to_city: to_city, from_city: from_city })
+		const {data, error} = await supabase
+			.rpc('get_tickets', { to_city: to_city, from_city: from_city })
+			//.from('tickets')
+  			//.select('*')
+  			//.or('to.eq.from,to.eq.from');
 
 		if (error) {
 			alert('Viga pileti leidmisel');
