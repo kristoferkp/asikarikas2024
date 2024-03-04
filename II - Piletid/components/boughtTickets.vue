@@ -107,7 +107,9 @@
 </template>
 
 <script setup>
-import { getData, setData } from "nuxt-storage/local-storage";
+
+import pkg from 'nuxt-storage/local-storage/index.js'; 
+const { getData } = pkg;
 const supabase = useSupabaseClient();
 const purchases = ref([]);
 const tickets = ref([]);
