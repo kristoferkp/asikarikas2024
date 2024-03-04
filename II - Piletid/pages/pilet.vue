@@ -189,7 +189,9 @@
 
 <script setup>
 	const needsAuth = false;
-	import { getData, setData } from "nuxt-storage/local-storage";
+	
+import pkg from 'nuxt-storage/local-storage/index.js'; 
+const { getData, setData } = pkg;
 	const ticket = getData("ticket");
 	console.log(ticket);
 
