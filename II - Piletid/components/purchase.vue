@@ -64,8 +64,8 @@
             type="date"
             id="end"
             name="trip-end"
-            value="2024-03-01"
-            min="2024-03-31"
+            value="2024-03-31"
+            min="2024-03-01"
             max="2026-12-31"
           />
         </div>
