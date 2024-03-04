@@ -194,9 +194,9 @@ import pkg from 'nuxt-storage/local-storage/index.js';
 const { getData, setData } = pkg;
 	const ticket = getData("ticket");
 	console.log(ticket);
-
 	const supabase = useSupabaseClient();
 	const user = supabase.auth.getUser();
+	const email = supabase.rpc("get_users_email_by_id", user.id)
 	
 	async function buy(ticket) {
 		if (!user) {
