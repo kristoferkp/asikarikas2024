@@ -267,7 +267,8 @@
 const supabase = useSupabaseClient();
 const tickets = ref([]);
 const loading = ref(false);
-import { getData, setData } from "nuxt-storage/local-storage";
+import pkg from 'nuxt-storage/local-storage/index.js'; 
+const { getData, setData } = pkg;
 const selectedTicket = ref(null);
 
 async function findTicket(event) {
