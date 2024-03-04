@@ -90,13 +90,13 @@
                   {{ ticket.price }}€
                 </td>
                 <td class="h-px w-auto whitespace-nowrap">
-                    <button
-                      @click="buy(ticket)"
-                      class="max-w-sm m-1 py-2 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gradient-to-tl from-blue-600 to-violet-600 hover:from-violet-600 hover:to-blue-600 text-white disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                    >
-                      Info
-                    </button>
-                  </td>
+                  <button
+                    @click="buy(ticket)"
+                    class="max-w-sm m-1 py-2 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gradient-to-tl from-blue-600 to-violet-600 hover:from-violet-600 hover:to-blue-600 text-white disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                  >
+                    Info
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -107,8 +107,7 @@
 </template>
 
 <script setup>
-
-import pkg from 'nuxt-storage/local-storage/index.js'; 
+import pkg from "nuxt-storage/local-storage/index.js";
 const { getData } = pkg;
 const supabase = useSupabaseClient();
 const purchases = ref([]);
@@ -158,7 +157,7 @@ function duplicateTickets() {
   tickets.value = duplicatedTickets;
 }
 async function buy(ticket) {
-	console.log(ticket);
+  console.log(ticket);
   setData("ticket", ticket);
   window.location.href = "/pilet";
 }

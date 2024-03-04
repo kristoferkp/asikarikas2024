@@ -262,7 +262,7 @@ def clear_rows(grid, locked):
     return increment
 
 
-def draw_window(surface, grid, score=0, last_score=0):
+def draw_window(surface, grid, score=0):
     surface.fill((0, 0, 0))  # fill the surface with black
 
     pygame.font.init()  # initialise font
@@ -373,9 +373,6 @@ def main(window):
             change_piece = False
             score += clear_rows(grid, locked_positions) * 10    # increment score by 10 for every row cleared
 
-            if last_score < score:
-                last_score = score
-
         draw_window(window, grid, score)
         pygame.display.update()
 
@@ -395,14 +392,15 @@ def main(window):
 def main_menu(window):
     run = True
     while run:
-        draw_text_middle('Start', 50, (255, 255, 255), window)
-        pygame.display.update()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
             elif event.type == pygame.KEYDOWN:
                 main(window)
+
+        draw_text_middle('Start', 50, (255, 255, 255), window)
+        pygame.display.update()
 
     pygame.quit()
 

@@ -20,6 +20,7 @@
               name="from_city"
               class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
               placeholder="Lisa lähtekoht"
+              value="Paide"
             />
           </div>
           <div class="w-full">
@@ -29,6 +30,7 @@
               name="to_city"
               class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
               placeholder="Lisa sihtkoht"
+              value="Tallinn"
             />
           </div>
 
@@ -56,18 +58,18 @@
             min="2024-03-01"
             max="2026-12-31"
           />
-          
+
           <input
             class="py-3 px-4 block max-w-md border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
             type="date"
             id="end"
             name="trip-end"
             value="2024-03-01"
-            min="2024-03-01"
+            min="2024-03-31"
             max="2026-12-31"
           />
         </div>
-		<div
+        <div
           class="mt-5 lg:mt-8 flex flex-col items-center gap-2 sm:flex-row sm:gap-3"
         >
           <label
@@ -82,7 +84,7 @@
             name="price-start"
             value="5"
           />
-          
+
           <input
             class="py-3 px-4 block max-w-md border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
             type="number"
@@ -267,7 +269,7 @@
 const supabase = useSupabaseClient();
 const tickets = ref([]);
 const loading = ref(false);
-import pkg from 'nuxt-storage/local-storage/index.js'; 
+import pkg from "nuxt-storage/local-storage/index.js";
 const { getData, setData } = pkg;
 const selectedTicket = ref(null);
 
@@ -286,10 +288,10 @@ async function findTicket(event) {
       to_city,
       from_city,
     })
-	.gte("date", start_date)
-  	.lte("date", end_date)
-	.gte("price", start_price)
-  	.lte("price", end_price);
+    .gte("date", start_date)
+    .lte("date", end_date)
+    .gte("price", start_price)
+    .lte("price", end_price);
   if (error) {
     alert("Viga pileti leidmisel");
   } else if (data.length === 0) {

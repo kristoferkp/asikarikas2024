@@ -1,15 +1,48 @@
+# I - Tetris
+Lihtne Tetrise mäng PyGame'is.
+
+Ole kindel, et Python on installitud.
+```
+F:\asikarikas2024> python
+Python 3.12.2 (tags/v3.12.2:6abddd9, Feb  6 2024, 21:26:36) [MSC v.1937 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+Ole ka kindel, et PyGame on installitud.
+```
+F:\asikarikas2024> pip install pygame
+Collecting pygame
+  Downloading pygame-2.5.2-cp312-cp312-win_amd64.whl.metadata (13 kB)
+Downloading pygame-2.5.2-cp312-cp312-win_amd64.whl (10.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.8/10.8 MB 19.3 MB/s eta 0:00:00
+Installing collected packages: pygame
+Successfully installed pygame-2.5.2
+```
+Mängimiseks jooksuta Python'i faili Tetris.py
+```
+cd 'I - Tetris'
+python -m Tetris
+```
+Ette peaks tulema PyGame'i aken. Mängu alustamiseks vajuta 'Enter' või tühik nuppu.
+
+Klotside liigutamine käib nooltega. Üles noole nupp keerab klotse, parem/vasak nooled liigutavad klotse ning alla nool kiirendab klotsi liigumist allapoole.
+
+Mäng lõpeb, kui klotsid jõuavad tippu. Mängu lõpus näidatakse skoori ning mäng crashib.
+
+![little meme](https://preview.redd.it/newtogithub-v0-lt632wr1jbjc1.png?auto=webp&s=4b2593c4308c3f7a827f5c0053df960e9bfc4c69)
+
 # II - Piletid
 Piletite veebirakendus ASI Karikas võistluse jaoks.
 Veebileht on ehitud [Nuxt3](https://nuxt.com) ja [Supabase](https://supabase.com) projektidega.
 Supabase-iga tuleb kaasa PostgreSQL andmebaas, authentimise teenus jm.
 
-# Demo
+## Demo
 Kasutage ette tehtud demo:
 [asi.kristoferp.com](https://asi.kristoferp.com)
 
 Kasutage demo, kuna ise hostimine vajab terve Supabase'i uuseti konfigureerimist. 
 
-## Ise hostimine
+### Ise hostimine
 
 Liigu piletid kausta, kus on 2. ülesande failid
 ```
@@ -32,7 +65,7 @@ Installi kõik vajalikud moodulid
 ```
 npm install
 ```
-## Supabase'i enda infrastruktuur
+### Supabase'i enda infrastruktuur
 Üks võimalus (soovitatuslik) on kasutada Supabase'i enda infrastrukuuri AWS peal. Tasuta kasutajaga saab kaasa lõpmatult API päringuid ja 50,000 aktiivset kasutajat kuus, mis on piisav meie väikese veebilehe jaoks.
 
 Kasutades [dokumentatsiooni](https://supabase.com/docs/reference/cli/supabase-db) on võimalik lisada remote Supabase'i schema.sql fail, mis asub supabase kaustas.
@@ -40,7 +73,7 @@ Kasutades [dokumentatsiooni](https://supabase.com/docs/reference/cli/supabase-db
 ### Self-hosting
 [Selle dokumendi](https://supabase.com/docs/guides/self-hosting) järgi peaks olema lihtne püstidada oma Supabase.
 
-## Deployment, development
+### Deployment, development
 Erinevad hostingu pakkujad: [Nuxt Deploy](https://nuxt.com/deploy)
 
 Development server
@@ -54,7 +87,7 @@ npm run build
 ```
 
 
-# Kuidas kasutada
+## Kuidas kasutada
 
 Minnes demo lehele on näha suurt teksti ja kahte nuppu, Osta pilet ja Kontrolli piletit. Navigatsiooni riba ja jalust.
 
@@ -81,14 +114,14 @@ Funktsioon leiab kõik piletid, kus on tõene üks tingimustest: esimene tingimu
 
 Selle funktsiooniga on võimalik leida kõik piletid, mis lähevad ühest kohast teise, ning piletid millel on peatus, kuhu kasutaja soovib minna. Lisaks leiab funktsioon kõik piletid ajavahemikust ning ka hinna vahemikust.
 
-Proovi näiteks Paide-Tartu 01/03/2024 - 10/03/2024 - 5-10 eurot.
+Proovi näiteks Paide-Tartu 01/03/2024 - 10/03/2024 - 5-15 eurot.
 Vastuseks on Tartu-Tallinn pilet, millel on peatus Paides.
 
 Kui kasutaja leiab pileti, millele ta soovib minna, saab ta vajutada osta nuppu, mis viib ta /pilet veebilehele, et oma ostu kinnitada.
 
 Pileti info leheküljel on näha kõiki andmeid, k.a. peatuste listi. Vajutades Osta, küsib veebileht, kas kasutaja on kindel, et soovib selle pileti osta. Kui kasutaja vajutab jah, saab tema ost lisatud andmebaasi, tema kasutaja alla. Kasutaja saab ka enda kasutajaga seotud emailile kirja, et tema ost on kinnitatud.
 
-### Kasutatud tehnoloogiatest
+### Kasutatud tehnoloogiad
 
 - Nuxt3
 - Vue
@@ -97,3 +130,15 @@ Pileti info leheküljel on näha kõiki andmeid, k.a. peatuste listi. Vajutades 
 - Tailwind CSS
 - Javascript (Typescript)
 - Netlify
+- Cloudflare DNS ning CDN
+
+
+# III - Ilmaennustus
+Meie kasutame ilmaennustuseks Tensorflow'd masinõppe treenimiseks, numpy'd ja pandas mooduleid andmetöötluseks ning matplotlib'i graafikuteks.
+
+Meie ilmaennustus programm võtab sisse Ilmateenistuse andmed ning treenib tehisintellekti, mis suudab ennustada järgnevat ilma. Meie masinõpe kasutab kahte LSTM mudelit, üks suudab ennustada ette järgmise tunni ilma, teine suudab ennustada järgmised 24 tundi.
+
+Failides on keras failid, mis on ette treenitud. Ise pole vaja treenida. Kui on soov ise treenida, on võimalik seda teha kasutades Tensorflow_Model.ipynb faili, kus peab kõik rakud läbi käima.
+
+Meil on tehtud [React](https://react.dev/) ja [Electron](https://www.electronjs.org/) äpp, millega saab mudeleid kasutada ning nendega ilma ennustada.
+

@@ -7,27 +7,27 @@ const website = ref("");
 const avatar_path = ref("");
 const purchases = ref([]);
 
-loading.value = true
-const user = useSupabaseUser()
+loading.value = true;
+const user = useSupabaseUser();
 
 const { data } = await supabase
-  .from('profiles')
+  .from("profiles")
   .select(`username, website, avatar_url`)
-  .eq('id', user.value.id)
-  .single()
+  .eq("id", user.value.id)
+  .single();
 
 if (data) {
-  username.value = data.username
-  website.value = data.website
-  avatar_path.value = data.avatar_url
+  username.value = data.username;
+  website.value = data.website;
+  avatar_path.value = data.avatar_url;
 }
 
-loading.value = false
+loading.value = false;
 
 async function updateProfile() {
   try {
-    loading.value = true
-    const user = useSupabaseUser()
+    loading.value = true;
+    const user = useSupabaseUser();
 
     const updates = {
       id: user.value.id,
@@ -35,38 +35,38 @@ async function updateProfile() {
       website: website.value,
       avatar_url: avatar_path.value,
       updated_at: new Date(),
-    }
+    };
 
-    const { error } = await supabase.from('profiles').upsert(updates, {
-      returning: 'minimal', // Don't return the value after inserting
-    })
+    const { error } = await supabase.from("profiles").upsert(updates, {
+      returning: "minimal", // Don't return the value after inserting
+    });
 
-    if (error) throw error
+    if (error) throw error;
   } catch (error) {
-    alert(error.message)
+    alert(error.message);
   } finally {
-    loading.value = false
+    loading.value = false;
   }
 }
 
 async function signOut() {
   try {
-    loading.value = true
-    const { error } = await supabase.auth.signOut()
-    if (error) throw error
+    loading.value = true;
+    const { error } = await supabase.auth.signOut();
+    if (error) throw error;
   } catch (error) {
-    alert(error.message)
+    alert(error.message);
   } finally {
-    loading.value = false
+    loading.value = false;
   }
 }
 
 async function getPurchases() {
-	const { data } = await supabase.from("purchases").select();
-	purchases.value = data;
+  const { data } = await supabase.from("purchases").select();
+  purchases.value = data;
 }
 onMounted(() => {
-	getPurchases();
+  getPurchases();
 });
 </script>
 
@@ -173,15 +173,20 @@ onMounted(() => {
             </button>
           </div>
         </div>
-		<div>
-			<p class="block text-sm font-medium mb-2 dark:text-white">Ostetud Piletid</p>
-		<ul>
-			<li class="w-full mt-1 py-2 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-			v-for="purchase in purchases" :key="purchase.id">
-				{{ purchase.purchase_id }}
-			</li>
-		</ul>
-	</div>
+        <div>
+          <p class="block text-sm font-medium mb-2 dark:text-white">
+            Ostetud Piletid
+          </p>
+          <ul>
+            <li
+              class="w-full mt-1 py-2 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+              v-for="purchase in purchases"
+              :key="purchase.id"
+            >
+              {{ purchase.purchase_id }}
+            </li>
+          </ul>
+        </div>
       </form>
     </div>
     <BoughtTickets />
