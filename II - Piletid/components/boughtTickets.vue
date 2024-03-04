@@ -108,7 +108,7 @@
 
 <script setup>
 import pkg from "nuxt-storage/local-storage/index.js";
-const { getData } = pkg;
+const { setData } = pkg;
 const supabase = useSupabaseClient();
 const purchases = ref([]);
 const tickets = ref([]);
