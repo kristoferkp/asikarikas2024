@@ -140,4 +140,21 @@ Meie ilmaennustus programm võtab sisse Ilmateenistuse andmed ning treenib tehis
 
 Failides on keras failid, mis on ette treenitud. Ise pole vaja treenida. Kui on soov ise treenida, on võimalik seda teha kasutades Tensorflow_Model.ipynb faili, kus peab kõik rakud läbi käima.
 
+Võtke 48 tunni ilmaandmed salvestage nimega input.csv. Faili peab vastama õigele formaadile. Näite fail on III - Ilmaennustus/app/ml/input.csv.
+Pange oma ilmaandmed näite faili asemele.
 
+Seejärel  
+```
+cd III - Ilmaennustus/app/ml/
+python main.py
+```
+
+Programmi töölepanemiseks on vajalik npm
+Installige kõik vajalikud lisad.
+```
+npm install
+```
+Programmi käivitamiseks on käsk.
+```
+npm run start
+```
