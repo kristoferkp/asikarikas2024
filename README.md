@@ -140,5 +140,4 @@ Meie ilmaennustus programm võtab sisse Ilmateenistuse andmed ning treenib tehis
 
 Failides on keras failid, mis on ette treenitud. Ise pole vaja treenida. Kui on soov ise treenida, on võimalik seda teha kasutades Tensorflow_Model.ipynb faili, kus peab kõik rakud läbi käima.
 
-Meil on tehtud [React](https://react.dev/) ja [Electron](https://www.electronjs.org/) äpp, millega saab mudeleid kasutada ning nendega ilma ennustada.
 
