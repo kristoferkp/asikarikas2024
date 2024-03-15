@@ -138,23 +138,28 @@ Meie kasutame ilmaennustuseks Tensorflow'd masinõppe treenimiseks, numpy'd ja p
 
 Meie ilmaennustus programm võtab sisse Ilmateenistuse andmed ning treenib tehisintellekti, mis suudab ennustada järgnevat ilma. Meie masinõpe kasutab kahte LSTM mudelit, üks suudab ennustada ette järgmise tunni ilma, teine suudab ennustada järgmised 24 tundi.
 
-Failides on keras failid, mis on ette treenitud. Ise pole vaja treenida. Kui on soov ise treenida, on võimalik seda teha kasutades Tensorflow_Model.ipynb faili, kus peab kõik rakud läbi käima.
-
-Võtke 48 tunni ilmaandmed salvestage nimega input.csv. Faili peab vastama õigele formaadile. Näite fail on III - Ilmaennustus/app/ml/input.csv.
+Võtke 48 tunni ilmaandmed salvestage nimega input.csv. Faili peab vastama õigele formaadile. Näite fail on III - Ilmaennustus/input.csv.
 Pange oma ilmaandmed näite faili asemele.
 
 Seejärel  
 ```
-cd III - Ilmaennustus/app/ml/
-python main.py
-```
+cd III - Ilmaennustus/
 
-Programmi töölepanemiseks on vajalik npm
-Installige kõik vajalikud lisad.
+python3 -m pip install tensorflow[and-cuda]
+
+python3 -m pip install -r requirements.txt
 ```
-npm install
-```
-Programmi käivitamiseks on käsk.
-```
-npm run start
-```
+Kui te kasutate Windows'i, peate kasutama ka WSL2'te. Rohkem infot Tensorflow installeerimiseks: [Tensorflow.org](https://www.tensorflow.org/install/pip#windows-native).
+
+
+Avage fail main.ipynb soovitatavalt Jupyter Notebook'is või kasutades Visual Studio Code'i Jupyter pluginit.
+
+Programmi alguses on võimalik muuta testimis andmeid ning ka treening andmeid.
+
+Vajutades nuppu Run All, läheb programm tööle. 
+See võib kaua mõelda, oleneb arvutist.
+
+Programm võtab kõik andmed ning töötleb neid. 
+Kõik graafikud on normaliseeritud temperatuuridega.
+
+Graafikutel on X'idega märgitud mudeli ennustatud temperatuur, rohelisega täppidega on tegelikud temperatuurid input.csv failist.
